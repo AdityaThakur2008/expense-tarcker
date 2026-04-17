@@ -6,7 +6,7 @@ import "dotenv/config";
 
 import { connectDB } from "./config/database.js";
 import authRoutes from "./routes/auth.routes.js";
-import protectedRoutes from "./routes/protected.routes.js";
+import expenseRoutes from "./routes/expense.routes.js";
 import {
   errorHandler,
   notFoundHandler,
@@ -35,8 +35,8 @@ app.get("/", (req, res) => {
   res.send("Expense Tracker API is running");
 });
 
-app.use("/auth", authRoutes);
-app.use("/protected", protectedRoutes);
+app.use("api/auth", authRoutes);
+app.use("/api/expenses", expenseRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
